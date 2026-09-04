@@ -1,0 +1,6 @@
+0 MOBO
+1 GPU
+2 PSU
+3 Keyboard
+4 CPU
+5 HDD
