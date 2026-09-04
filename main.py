@@ -1,3 +1,7 @@
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import json
 from io import BytesIO
 
@@ -29,7 +33,7 @@ app = FastAPI()
 # Load Model
 # ============================================================
 
-print("Loading TensorFlow SavedModel...")
+print("Loading TensorFlow SavedModel...",flush=True)
 
 model = tf.saved_model.load(
     MODEL_PATH
@@ -39,17 +43,17 @@ infer = model.signatures[
     "serving_default"
 ]
 
-print("Model loaded successfully.")
+print("Model loaded successfully.",flush=True)
 
 # ============================================================
 # Model Signature
 # ============================================================
 
-print("Input signature:")
-print(infer.structured_input_signature)
+print("Input signature:",flush=True)
+print(infer.structured_input_signature,flush=True)
 
-print("Output signature:")
-print(infer.structured_outputs)
+print("Output signature:",flush=True)
+print(infer.structured_outputs,flush=True)
 
 
 # ============================================================
@@ -93,12 +97,13 @@ def load_labels():
 labels = load_labels()
 
 
-print("Loaded labels:")
+print("Loaded labels:",flush=True)
 
 for index, label in enumerate(labels):
 
     print(
-        f"{index}: {label}"
+        f"{index}: {label}",
+        flush=True
     )
 
 
